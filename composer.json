@@ -1,0 +1,21 @@
+{
+    "name": "marcobuschini/mlb-dag-bundle",
+    "description": "This bundle provides entities, and methods to handle directed acyclic graphs.",
+    "keywords": ["DAG", "graph", "acyclic"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco L. Buschini",
+            "email": "marco.buschini@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/symfony": "2.6.*"
+    },
+    "autoload": {
+        "psr-0": { "MLB\\DagBundle": "" }
+    },
+    "target-dir": "MLB/DagBundle/"
+}
