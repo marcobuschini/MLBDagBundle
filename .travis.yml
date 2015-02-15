@@ -12,7 +12,7 @@ env:
 #  - SYMFONY_VERSION=2.7.*
 
 before_script:
-  - composer --no-interaction create-project symfony/framework-standard-edition:{SYMFONY_VERSION} Testing/
+  - composer --no-interaction create-project symfony/framework-standard-edition:$SYMFONY_VERSION Testing/
   - cd Testing
   - mkdir -p src/MLB/
   - mv ../MLBDagBundle src/MLB/DagBundle
