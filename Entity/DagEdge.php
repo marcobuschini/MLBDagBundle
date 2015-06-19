@@ -1,6 +1,6 @@
 <?php
 
-namespace MLB\DagBundle\Entity;
+namespace MLBDagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DagEdge
  *
  * @ORM\Table(name="dag_edge")
- * @ORM\Entity(repositoryClass="MLB\DagBundle\Entity\DagEdgeRepository")
+ * @ORM\Entity(repositoryClass="MLBDagBundle\Entity\DagEdgeRepository")
  */
 class DagEdge
 {
@@ -92,10 +92,10 @@ class DagEdge
     /**
      * Set incoming_edge
      *
-     * @param \MLB\DagBundle\Entity\DagEdge $incomingEdge
+     * @param \MLBDagBundle\Entity\DagEdge $incomingEdge
      * @return DagEdge
      */
-    public function setIncomingEdge(\MLB\DagBundle\Entity\DagEdge $incomingEdge = null)
+    public function setIncomingEdge(\MLBDagBundle\Entity\DagEdge $incomingEdge = null)
     {
         $this->incoming_edge = $incomingEdge;
 
@@ -105,7 +105,7 @@ class DagEdge
     /**
      * Get incoming_edge
      *
-     * @return \MLB\DagBundle\Entity\DagEdge 
+     * @return \MLBDagBundle\Entity\DagEdge
      */
     public function getIncomingEdge()
     {
@@ -115,10 +115,10 @@ class DagEdge
     /**
      * Set direct_edge
      *
-     * @param \MLB\DagBundle\Entity\DagEdge $directEdge
+     * @param \MLBDagBundle\Entity\DagEdge $directEdge
      * @return DagEdge
      */
-    public function setDirectEdge(\MLB\DagBundle\Entity\DagEdge $directEdge = null)
+    public function setDirectEdge(\MLBDagBundle\Entity\DagEdge $directEdge = null)
     {
         $this->direct_edge = $directEdge;
 
@@ -128,7 +128,7 @@ class DagEdge
     /**
      * Get direct_edge
      *
-     * @return \MLB\DagBundle\Entity\DagEdge 
+     * @return \MLBDagBundle\Entity\DagEdge
      */
     public function getDirectEdge()
     {
@@ -138,10 +138,10 @@ class DagEdge
     /**
      * Set outgoing_edge
      *
-     * @param \MLB\DagBundle\Entity\DagEdge $outgoingEdge
+     * @param \MLBDagBundle\Entity\DagEdge $outgoingEdge
      * @return DagEdge
      */
-    public function setOutgoingEdge(\MLB\DagBundle\Entity\DagEdge $outgoingEdge = null)
+    public function setOutgoingEdge(\MLBDagBundle\Entity\DagEdge $outgoingEdge = null)
     {
         $this->outgoing_edge = $outgoingEdge;
 
@@ -151,7 +151,7 @@ class DagEdge
     /**
      * Get outgoing_edge
      *
-     * @return \MLB\DagBundle\Entity\DagEdge 
+     * @return \MLBDagBundle\Entity\DagEdge
      */
     public function getOutgoingEdge()
     {
@@ -161,10 +161,10 @@ class DagEdge
     /**
      * Set start_node
      *
-     * @param \MLB\DagBundle\Entity\DagNode $startNode
+     * @param \MLBDagBundle\Entity\DagNode $startNode
      * @return DagEdge
      */
-    public function setStartNode(\MLB\DagBundle\Entity\DagNode $startNode = null)
+    public function setStartNode(\MLBDagBundle\Entity\DagNode $startNode = null)
     {
         $this->start_node = $startNode;
 
@@ -174,7 +174,7 @@ class DagEdge
     /**
      * Get start_node
      *
-     * @return \MLB\DagBundle\Entity\DagNode 
+     * @return \MLBDagBundle\Entity\DagNode
      */
     public function getStartNode()
     {
@@ -184,10 +184,10 @@ class DagEdge
     /**
      * Set end_node
      *
-     * @param \MLB\DagBundle\Entity\DagNode $endNode
+     * @param \MLBDagBundle\Entity\DagNode $endNode
      * @return DagEdge
      */
-    public function setEndNode(\MLB\DagBundle\Entity\DagNode $endNode = null)
+    public function setEndNode(\MLBDagBundle\Entity\DagNode $endNode = null)
     {
         $this->end_node = $endNode;
 
@@ -197,7 +197,7 @@ class DagEdge
     /**
      * Get end_node
      *
-     * @return \MLB\DagBundle\Entity\DagNode 
+     * @return \MLBDagBundle\Entity\DagNode
      */
     public function getEndNode()
     {

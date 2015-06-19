@@ -1,6 +1,6 @@
 <?php
 
-namespace MLB\DagBundle;
+namespace MLBDagBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
