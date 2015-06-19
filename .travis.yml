@@ -12,10 +12,9 @@ env:
 #  - SYMFONY_VERSION=2.7.*
 
 before_script:
-  - composer --no-interaction create-project symfony/framework-standard-edition:$SYMFONY_VERSION Testing/
-  - cd Testing
+  - composer --no-interaction create-project symfony/framework-standard-edition:$SYMFONY_VERSION .
   - mkdir -p src/MLB/
-  - mv ../MLBDagBundle src/MLB/DagBundle
+  - mv marcobuschini/MLBDagBundle src/MLB/DagBundle
   - cp src/MLB/DagBundle/Resources/config/*.yml config/
   - php app/console doctrine:database:create --env=test
   - php app/console doctrine:schema:create --env=test
