@@ -1,8 +1,6 @@
 <?php
 namespace MLB\DagBundle\Tests\Entity;
 
-use Liip\FunctionalTestBundle\Test\WebTestCase;
-
 class DagConnectFunctionalTest extends WebTestCase
 {
     /**
