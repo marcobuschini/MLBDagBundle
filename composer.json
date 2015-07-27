@@ -17,6 +17,11 @@
         "doctrine/dbal": "<2.5",
         "doctrine/doctrine-bundle": "~1.4"
     },
+    "require-dev": {
+        "sensio/generator-bundle": "~2.3",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*",
+        "liip/functional-test-bundle": "^1.2"
+    },
     "autoload": {
         "psr-0": { "MLB\\DagBundle": "" }
     },
