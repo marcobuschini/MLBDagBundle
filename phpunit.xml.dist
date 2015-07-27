@@ -2,6 +2,10 @@
 
 <phpunit bootstrap="./Tests/bootstrap.php" colors="true">
 
+    <php>
+        <server name="KERNEL_DIR" value="Test/" />
+    </php>
+
     <testsuites>
         <testsuite name="MLBDagBundle test suite">
             <directory suffix="Test.php">./Tests</directory>
