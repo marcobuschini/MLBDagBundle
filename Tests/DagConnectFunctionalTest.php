@@ -1,7 +1,7 @@
 <?php
 namespace MLB\DagBundle\Tests;
 
-class DagConnectFunctionalTest extends Liip\FunctionalTestBundle\Test\WebTestCase
+class DagConnectFunctionalTest extends \Liip\FunctionalTestBundle\Test\WebTestCase
 {
     /**
      * @var \Doctrine\ORM\EntityManager
