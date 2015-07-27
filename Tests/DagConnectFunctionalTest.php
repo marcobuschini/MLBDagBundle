@@ -16,8 +16,8 @@ class DagConnectFunctionalTest extends WebTestCase
     public function setUp()
     {
        $this->loadFixtures(array(
-            'MLB\DagBundle\DataFixtures\ORM\LoadDagNodes',
-            'MLB\DagBundle\DataFixtures\ORM\LoadDagEdges'
+            'MLBDagBundle\DataFixtures\ORM\LoadDagNodes',
+            'MLBDagBundle\DataFixtures\ORM\LoadDagEdges'
         ));
         static::$kernel = static::createKernel();
         static::$kernel->boot();
@@ -59,7 +59,7 @@ class DagConnectFunctionalTest extends WebTestCase
         
         // Count all the edges
         $dql =  'SELECT e'.
-                '  FROM MLB\DagBundle\Entity\DagEdge e';
+                '  FROM MLBDagBundle\Entity\DagEdge e';
         $query = $this->em->createQuery($dql);
 
         $count = $query->getResult();
@@ -191,6 +191,6 @@ class DagConnectFunctionalTest extends WebTestCase
         $edgeRepo->deleteEdgeByEnds($node4, $node5);
         $direct = $edgeRepo->findAllDirectEdges();
         
-        //$this->assertCount(12, $direct);
+        $this->assertCount(12, $direct);
     }
 }

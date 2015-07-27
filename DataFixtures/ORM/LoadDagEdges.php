@@ -1,12 +1,12 @@
 <?php
 
-namespace MLB\DagBundle\DataFixtures\ORM;
+namespace MLBDagBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use MLB\DagBundle\Entity\DagEdge;
-use MLB\DagBundle\Entity\DagNode;
+use MLBDagBundle\Entity\DagEdge;
+use MLBDagBundle\Entity\DagNode;
 
 class LoadDagEdges implements FixtureInterface, DependentFixtureInterface
 {
@@ -14,19 +14,19 @@ class LoadDagEdges implements FixtureInterface, DependentFixtureInterface
 
     public function getDependencies()
     {
-        return array('MLB\DagBundle\DataFixtures\ORM\LoadDagNodes');
+        return array('MLBDagBundle\DataFixtures\ORM\LoadDagNodes');
     }
 
     public function load(ObjectManager $manager)
     {
-        $repoNode = $manager->getRepository('MLB\DagBundle\Entity\DagNode');
+        $repoNode = $manager->getRepository('MLBDagBundle\Entity\DagNode');
         
         $nodes = $repoNode->findAll();
         foreach ($nodes as $node) {
             $nodeArray[] = $node;
         }
 
-        $repoEdge = $manager->getRepository('MLB\DagBundle\Entity\DagEdge');
+        $repoEdge = $manager->getRepository('MLBDagBundle\Entity\DagEdge');
         
         // First graph
         $repoEdge->createEdge($nodeArray[0], $nodeArray[1]);

@@ -1,6 +1,6 @@
 <?php
 
-namespace MLB\DagBundle\Entity;
+namespace MLBDagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DagNode
  *
  * @ORM\Table(name="dag_node")
- * @ORM\Entity(repositoryClass="MLB\DagBundle\Entity\DagNodeRepository")
+ * @ORM\Entity(repositoryClass="MLBDagBundle\Entity\DagNodeRepository")
  */
 class DagNode
 {
