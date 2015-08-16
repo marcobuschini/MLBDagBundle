@@ -12,6 +12,7 @@ matrix:
 before_script:
   - composer self-update
   - composer install --prefer-source
+  - php app/console doctrine:fixtures:load
 
 script:
   - phpunit --coverage-text --colors --verbose
