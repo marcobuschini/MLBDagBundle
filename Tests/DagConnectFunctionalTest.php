@@ -1,7 +1,9 @@
 <?php
 namespace MLB\DagBundle\Tests;
 
-class DagConnectFunctionalTest extends \Liip\FunctionalTestBundle\Test\WebTestCase
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+
+class DagConnectFunctionalTest extends KernelTestCase;
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -13,12 +15,7 @@ class DagConnectFunctionalTest extends \Liip\FunctionalTestBundle\Test\WebTestCa
      */
     public function setUp()
     {
-       $this->loadFixtures(array(
-            'MLBDagBundle\DataFixtures\ORM\LoadDagNodes',
-            'MLBDagBundle\DataFixtures\ORM\LoadDagEdges'
-        ));
-        static::$kernel = static::createKernel();
-        static::$kernel->boot();
+        self::bootKernel();
         $this->em = static::$kernel->getContainer()
             ->get('doctrine')
             ->getManager()
