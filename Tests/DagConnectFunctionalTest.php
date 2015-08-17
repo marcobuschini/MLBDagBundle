@@ -17,8 +17,8 @@ class DagConnectFunctionalTest extends WebTestCase
      */
     public function setUp()
     {
-        self::bootKernel();
-        $this->em = static::$kernel->getContainer()
+        $client = self::createClient();
+        $this->em = $client->getContainer()
             ->get('doctrine')
             ->getManager()
         ;
