@@ -5,7 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use MLBDagBundle\DataFixtures\ORM\LoadDagNodes;
 use MLBDagBundle\DataFixtures\ORM\LoadDagEdges;
 
-class DagConnectFunctionalTest extends WebTestCase;
+class DagConnectFunctionalTest extends WebTestCase
 {
     /**
      * @var \Doctrine\ORM\EntityManager
