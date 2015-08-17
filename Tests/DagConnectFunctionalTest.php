@@ -1,9 +1,11 @@
 <?php
 namespace MLB\DagBundle\Tests;
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use MLBDagBundle\DataFixtures\ORM\LoadDagNodes;
+use MLBDagBundle\DataFixtures\ORM\LoadDagEdges;
 
-class DagConnectFunctionalTest extends KernelTestCase;
+class DagConnectFunctionalTest extends WebTestCase;
 {
     /**
      * @var \Doctrine\ORM\EntityManager
@@ -20,6 +22,12 @@ class DagConnectFunctionalTest extends KernelTestCase;
             ->get('doctrine')
             ->getManager()
         ;
+
+	$nodeLoader = new LoadDagNodes();
+	$nodeLoader->load($this->em);
+
+	$edgeLoader = new LoadDagEdges();
+	$edgeLoader->load($this->em);
     }
 
     public function testInitialCreation()
