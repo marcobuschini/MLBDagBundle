@@ -1,6 +1,6 @@
 <?php
 
-namespace MLBDagBundle\Tests;
+namespace MLB\DagBundle\Tests;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
