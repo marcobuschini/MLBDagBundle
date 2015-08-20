@@ -1,34 +1,17 @@
 <?php
-namespace MLB\DagBundle\Tests;
+namespace MLB\DagBundle\Tests\Doctrine;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use MLBDagBundle\DataFixtures\ORM\LoadDagNodes;
 use MLBDagBundle\DataFixtures\ORM\LoadDagEdges;
+use MLBDagBundle\Tests\IntegrationTestCase;
 
-class DagConnectFunctionalTest extends WebTestCase
+
+class DagConnectFunctionalTest extends IntegrationTestCase
 {
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $em;
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUp()
-    {
-        $client = self::createClient();
-        $this->em = $client->getContainer()
-            ->get('doctrine')
-            ->getManager()
-        ;
-
-	$nodeLoader = new LoadDagNodes();
-	$nodeLoader->load($this->em);
-
-	$edgeLoader = new LoadDagEdges();
-	$edgeLoader->load($this->em);
-    }
 
     public function testInitialCreation()
     {
