@@ -4,6 +4,10 @@ namespace MLB\DagBundle\Tests\Doctrine;
 use MLB\DagBundle\DataFixtures\ORM\LoadDagNodes;
 use MLB\DagBundle\DataFixtures\ORM\LoadDagEdges;
 use MLB\DagBundle\Tests\IntegrationTestCase;
+use MLB\DagBundle\Entity\DagEdge;
+use MLB\DagBundle\Entity\DagNode;
+use MLB\DagBundle\Entity\DagEdgeRepository;
+use MLB\DagBundle\Entity\DagNodeRepository;
 
 
 class DagConnectFunctionalTest extends IntegrationTestCase
