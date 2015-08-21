@@ -26,7 +26,7 @@ class DagEdgeRepository extends EntityRepository
 
         // Check for a circular reference, step 2
         $dql =  'SELECT e'.
-                '  FROM MLBDagBundle\Entity\DagEdge e'.
+                '  FROM MLB\DagBundle\Entity\DagEdge e'.
                 ' WHERE e.start_node = :end'.
                 '   AND e.end_node = :start';
         $query = $em->createQuery($dql);
@@ -52,7 +52,7 @@ class DagEdgeRepository extends EntityRepository
 
         // Step 1: A to B incoming edges
         $dql = 'SELECT e '.
-               '  FROM MLBDagBundle\Entity\DagEdge e '.
+               '  FROM MLB\DagBundle\Entity\DagEdge e '.
                ' WHERE e.end_node = :start';
         $query = $em->createQuery($dql);
         $query->setParameter('start', $start);
@@ -74,7 +74,7 @@ class DagEdgeRepository extends EntityRepository
         
         // Step 2: A to B outgoing edges
         $dql = 'SELECT e '.
-               '  FROM MLBDagBundle\Entity\DagEdge e'.
+               '  FROM MLB\DagBundle\Entity\DagEdge e'.
                ' WHERE e.start_node = :end';
         $query = $em->createQuery($dql);
         $query->setParameter('end', $end);
@@ -96,8 +96,8 @@ class DagEdgeRepository extends EntityRepository
         
         // Step 3: A's incoming to B's end nodes outgoing edges
         $dql = 'SELECT A.id ida, A.hops ahops, B.id idb, B.hops bhops'.
-               '  FROM MLBDagBundle\Entity\DagEdge A'.
-               '  JOIN MLBDagBundle\Entity\DagEdge B'.
+               '  FROM MLB\DagBundle\Entity\DagEdge A'.
+               '  JOIN MLB\DagBundle\Entity\DagEdge B'.
                ' WHERE A.start_node = :end'.
                '   AND B.end_node = :start';
         $query = $em->createQuery($dql);
@@ -105,7 +105,7 @@ class DagEdgeRepository extends EntityRepository
               ->setParameter('end', $end);
 
         $steps = $query->getResult();
-        $repoEdge = $em->getRepository('MLBDagBundle\Entity\DagEdge');
+        $repoEdge = $em->getRepository('MLB\DagBundle\Entity\DagEdge');
 
         foreach($steps as $step)
         {
@@ -128,7 +128,7 @@ class DagEdgeRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $dql = 'SELECT e'.
-               '  FROM MLBDagBundle\Entity\DagEdge e'.
+               '  FROM MLB\DagBundle\Entity\DagEdge e'.
                ' WHERE e.start_node = :start'.
                '   AND e.end_node = :end'.
                '   AND e.hops = :hops';
@@ -146,7 +146,7 @@ class DagEdgeRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $dql = 'SELECT e'.
-               '  FROM MLBDagBundle\Entity\DagEdge e'.
+               '  FROM MLB\DagBundle\Entity\DagEdge e'.
                ' WHERE e.start_node = :start'.
                '   AND e.end_node = :end'.
                ' ORDER BY e.hops';
@@ -164,7 +164,7 @@ class DagEdgeRepository extends EntityRepository
     {
         $em = $this->getEntityManager();
         $dql = 'SELECT e'.
-               '  FROM MLBDagBundle\Entity\DagEdge e'.
+               '  FROM MLB\DagBundle\Entity\DagEdge e'.
                ' WHERE e.hops = 0';
 
         $query = $em->createQuery($dql);
@@ -186,7 +186,7 @@ class DagEdgeRepository extends EntityRepository
         $em = $this->getEntityManager();
         // Check if direct edge exists
         $dql =  'SELECT e'.
-                '  FROM MLBDagBundle\Entity\DagEdge e'.
+                '  FROM MLB\DagBundle\Entity\DagEdge e'.
                 ' WHERE e.id = :id'.
                 '   AND e.hops = :hops';
         $query = $em->createQuery($dql);
@@ -202,7 +202,7 @@ class DagEdgeRepository extends EntityRepository
         
         // Step 1: find derived edges inserted by direct edges
         $dql = 'SELECT e'.
-               '  FROM MLBDagBundle\Entity\DagEdge e'.
+               '  FROM MLB\DagBundle\Entity\DagEdge e'.
                ' WHERE e.direct_edge = :direct';
         $query = $em->createQuery($dql);
         $query->setParameter('direct', $edge);
@@ -213,7 +213,7 @@ class DagEdgeRepository extends EntityRepository
             $rowCount = 0;
             
             $dql = 'SELECT e'.
-                   '  FROM MLBDagBundle\Entity\DagEdge e'.
+                   '  FROM MLB\DagBundle\Entity\DagEdge e'.
                    ' WHERE e.hops > 0'.
                    '   AND (e.incoming_edge IN (:purgelist)'.
                    '   AND e.outgoing_edge IN (:purgelist))'.
@@ -226,7 +226,7 @@ class DagEdgeRepository extends EntityRepository
         } while($rowCount != 0);
         
         $dql = 'DELETE'.
-               '  FROM MLBDagBundle\Entity\DagEdge e'.
+               '  FROM MLB\DagBundle\Entity\DagEdge e'.
                ' WHERE e IN (:purgelist)';
         $query = $em->createQuery($dql);
         $query->setParameter('purgelist', $purgeList);
