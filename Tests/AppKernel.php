@@ -1,6 +1,6 @@
 <?php
 
-namespace Craue\GeoBundle\Tests;
+namespace MLB\DagBundle\Tests;
 
 require_once __DIR__.'/bootstrap.php';
 
