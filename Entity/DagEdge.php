@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DagEdge
  *
  * @ORM\Table(name="dag_edge")
- * @ORM\Entity(repositoryClass="MLBDagBundle\Entity\DagEdgeRepository")
+ * @ORM\Entity(repositoryClass="MLB\DagBundle\Entity\DagEdgeRepository")
  */
 class DagEdge
 {
