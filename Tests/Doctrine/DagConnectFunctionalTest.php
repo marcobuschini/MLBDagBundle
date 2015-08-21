@@ -15,7 +15,7 @@ class DagConnectFunctionalTest extends IntegrationTestCase
 
     public function testInitialCreation()
     {
-	$this->em = static::getEntityManager()
+	$this->em = static::getEntityManager();
         // Count only direct edges
         $edgeRepo = $this->em->getRepository('MLBDagBundle:DagEdge');
         $direct = $edgeRepo->findAllDirectEdges();
@@ -165,7 +165,7 @@ class DagConnectFunctionalTest extends IntegrationTestCase
 
     public function testConnection()
     {
-	$this->em = static::getEntityManager()
+	$this->em = static::getEntityManager();
         $nodeRepo = $this->em->getRepository('MLBDagBundle:DagNode');
         $node4 = $nodeRepo->findOneByName('Node 4');
         $node5 = $nodeRepo->findOneByName('Node 5');
