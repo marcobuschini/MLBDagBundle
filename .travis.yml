@@ -12,6 +12,7 @@ matrix:
 before_script:
   - composer self-update
   - composer install --prefer-source
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
 
 script:
   - phpunit --coverage-text --colors --verbose
