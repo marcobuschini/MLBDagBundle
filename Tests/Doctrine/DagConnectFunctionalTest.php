@@ -1,9 +1,9 @@
 <?php
 namespace MLB\DagBundle\Tests\Doctrine;
 
-use MLBDagBundle\DataFixtures\ORM\LoadDagNodes;
-use MLBDagBundle\DataFixtures\ORM\LoadDagEdges;
-use MLBDagBundle\Tests\IntegrationTestCase;
+use MLB\DagBundle\DataFixtures\ORM\LoadDagNodes;
+use MLB\DagBundle\DataFixtures\ORM\LoadDagEdges;
+use MLB\DagBundle\Tests\IntegrationTestCase;
 
 
 class DagConnectFunctionalTest extends IntegrationTestCase
