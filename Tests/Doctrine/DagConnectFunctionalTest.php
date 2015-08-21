@@ -11,7 +11,7 @@ class DagConnectFunctionalTest extends IntegrationTestCase
     /**
      * @var \Doctrine\ORM\EntityManager
      */
-    private $em;
+    private $em = static::getEntityManager();
 
     public function testInitialCreation()
     {
