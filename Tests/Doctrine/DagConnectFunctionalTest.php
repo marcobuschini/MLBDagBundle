@@ -165,12 +165,15 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $edges89 = $edgeRepo->findEdges($node8, $node9);
         $this->assertCount(1, $edges89);
         $this->assertEquals($edges89[0]->getHops(), 0);
+/*
     }
 
     public function testConnection()
     {
+
 	$this->em = static::getEntityManager();
         $nodeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagNode');
+*/
         $node4 = $nodeRepo->findOneByName('Node 4');
         $node5 = $nodeRepo->findOneByName('Node 5');
         
