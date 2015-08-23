@@ -6,7 +6,7 @@ doctrine:
     port: ~
     dbname: test
     user: travis
-    password: ~
+    password: ""
   orm:
     auto_generate_proxy_classes: "%kernel.debug%"
     auto_mapping: true
