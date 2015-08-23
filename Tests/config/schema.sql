@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.25, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: symfony_dag
+-- Host: localhost    Database: test
 -- ------------------------------------------------------
 -- Server version	5.6.25-0ubuntu0.15.04.1
 
@@ -15,6 +15,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+CREATE DATABASE IF NOT EXISTS test;
+
+USE DATABASE test;
 --
 -- Table structure for table `dag_node`
 --
