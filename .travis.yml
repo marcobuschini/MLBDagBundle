@@ -12,6 +12,7 @@ matrix:
 before_script:
   - composer self-update
   - composer install --prefer-source
+  - mysql -e "create database IF NOT EXISTS test;" -uroot
   - mysql --user="travis" --password="" test <./Tests/config/schema.sql
 
 script:
