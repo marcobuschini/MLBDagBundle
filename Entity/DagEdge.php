@@ -141,7 +141,7 @@ class DagEdge
      * @param MLB\DagBundle\Entity\DagEdge $outgoingEdge
      * @return DagEdge
      */
-    public function setOutgoingEdge(MLB\DagBundle\Entity\DagEdge $outgoingEdge = null)
+    public function setOutgoingEdge(DagEdge $outgoingEdge = null)
     {
         $this->outgoing_edge = $outgoingEdge;
 
@@ -187,7 +187,7 @@ class DagEdge
      * @param MLB\DagBundle\Entity\DagNode $endNode
      * @return DagEdge
      */
-    public function setEndNode(MLB\DagBundle\Entity\DagNode $endNode = null)
+    public function setEndNode(DagNode $endNode = null)
     {
         $this->end_node = $endNode;
 
