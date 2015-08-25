@@ -53,7 +53,7 @@ class DagConnectFunctionalTest extends IntegrationTestCase
                 '  FROM MLB\DagBundle\Entity\DagEdge e';
         $query = $this->em->createQuery($dql);
 
-        $count = $query->getResult();
+        $count = $query->getResult(Query::HYDRATE_ARRAY);
         $this->assertCount(30, $count);
         
         // Test edges from node 0 to node 1
