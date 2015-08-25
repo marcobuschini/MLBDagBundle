@@ -155,7 +155,7 @@ class DagEdgeRepository extends EntityRepository
         $query->setParameter('start', $start);
         $query->setParameter('end', $end);
 
-        $result = $query->getResult();
+        $result = $query->getScalarResult();
         
         return $result;
     }
@@ -169,7 +169,7 @@ class DagEdgeRepository extends EntityRepository
 
         $query = $em->createQuery($dql);
 
-        return $query->getResult();
+        return $query->getScalarResult();
     }
 
     public function deleteEdgeByEnds(DagNode $start, DagNode $end)
