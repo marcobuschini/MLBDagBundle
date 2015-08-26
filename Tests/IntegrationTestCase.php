@@ -28,10 +28,6 @@ abstract class IntegrationTestCase extends WebTestCase {
 	 */
 	protected function setUp() {
 		static::createClient();
-		$this->cleanDatabaseBeforeTest();
-	}
-
-	protected function cleanDatabaseBeforeTest() {
 	}
 
 	/**
@@ -51,6 +47,7 @@ abstract class IntegrationTestCase extends WebTestCase {
 
 		static::executeCommand($application, 'doctrine:schema:drop', array('--force' => true, '--full-database' => true));
 		static::executeCommand($application, 'doctrine:schema:update', array('--force' => true));
+		static::executeCommand($application, 'doctrine:fixtures:load', array('--force' => true));
 	}
 
 	private static function executeCommand(Application $application, $command, array $options = array()) {
