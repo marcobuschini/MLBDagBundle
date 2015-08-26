@@ -26,8 +26,18 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $dn = new LoadDagNodes();
         $dn->load($this->em);
 
+        // Count nodes
+        $nodeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagNode');
+        $node = $nodeRepo->findAll();
+        $this->assertCount(10, $node);
+
         $de = new LoadDagEdges();
         $de->load($this->em);
+
+        // Count only direct edges
+        $edgeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagEdge');
+        $direct = $edgeRepo->findAllDirectEdges();
+        $this->assertCount(12, $direct);
     }
 
     /*
@@ -36,10 +46,6 @@ class DagConnectFunctionalTest extends IntegrationTestCase
     public function testInitialCreation()
     {
         $this->em = static::getEntityManager();
-        // Count only direct edges
-        $edgeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagEdge');
-        $direct = $edgeRepo->findAllDirectEdges();
-        $this->assertCount(12, $direct);
         
         // Test for test nodes to exist
         $nodeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagNode');
