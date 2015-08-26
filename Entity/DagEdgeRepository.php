@@ -23,7 +23,7 @@ class DagEdgeRepository extends EntityRepository
         $em = $this->getEntityManager();
 
         // Check for a circular reference, step 1
-        if($start->getId() == $end->getId())
+        if($start->getId() === $end->getId())
             throw new CircularRelationException();
 
         // Check for a circular reference, step 2
@@ -177,7 +177,7 @@ class DagEdgeRepository extends EntityRepository
     public function deleteEdgeByEnds(DagNode $start, DagNode $end)
     {
         $direct = $this->findDirectEdge($start, $end);
-        if($direct == null)
+        if($direct === null)
             throw new EdgeDoesNotExistException();
         $this->deleteEdge($direct);
     }
@@ -197,7 +197,7 @@ class DagEdgeRepository extends EntityRepository
         
         $direct = $query->getOneOrNullResult();
         
-        if($direct == null)
+        if($direct === null)
             throw new EdgeDoesNotExistException();
         
         $em->getConnection()->beginTransaction();
