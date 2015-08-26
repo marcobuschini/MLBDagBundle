@@ -3,6 +3,8 @@
 namespace MLB\DagBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use MLB\DagBundle\EdgeDoesNotExistException;
+use MLB\DagBundle\CircularRelationException;
 
 /**
  * DagEdgeRepository
