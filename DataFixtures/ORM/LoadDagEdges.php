@@ -5,8 +5,8 @@ namespace MLB\DagBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use MLBDagBundle\Entity\DagEdge;
-use MLBDagBundle\Entity\DagNode;
+use MLB\DagBundle\Entity\DagEdge;
+use MLB\DagBundle\Entity\DagNode;
 
 class LoadDagEdges implements FixtureInterface, DependentFixtureInterface
 {
