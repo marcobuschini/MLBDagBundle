@@ -8,8 +8,8 @@ use MLB\DagBundle\Entity\DagEdge;
 use MLB\DagBundle\Entity\DagNode;
 use MLB\DagBundle\Entity\DagEdgeRepository;
 use MLB\DagBundle\Entity\DagNodeRepository;
-use MLB\DagBundle\DataFixtures\ORM\DagEdge;
-use MLB\DagBundle\DataFixtures\ORM\DagNode;
+use MLB\DagBundle\DataFixtures\ORM\LoadDagEdge;
+use MLB\DagBundle\DataFixtures\ORM\LoadDagNode;
 
 
 class DagConnectFunctionalTest extends IntegrationTestCase
