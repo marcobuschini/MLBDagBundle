@@ -14,19 +14,19 @@ class LoadDagEdges implements FixtureInterface, DependentFixtureInterface
 
     public function getDependencies()
     {
-        return array('MLBDagBundle\DataFixtures\ORM\LoadDagNodes');
+        return array('MLB\DagBundle\DataFixtures\ORM\LoadDagNodes');
     }
 
     public function load(ObjectManager $manager)
     {
-        $repoNode = $manager->getRepository('MLBDagBundle\Entity\DagNode');
+        $repoNode = $manager->getRepository('MLB\DagBundle\Entity\DagNode');
         
         $nodes = $repoNode->findAll();
         foreach ($nodes as $node) {
             $nodeArray[] = $node;
         }
 
-        $repoEdge = $manager->getRepository('MLBDagBundle\Entity\DagEdge');
+        $repoEdge = $manager->getRepository('MLB\DagBundle\Entity\DagEdge');
         
         // First graph
         $repoEdge->createEdge($nodeArray[0], $nodeArray[1]);
