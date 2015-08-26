@@ -41,6 +41,7 @@ abstract class IntegrationTestCase extends WebTestCase {
 	}
 
 	protected static function rebuildDatabase() {
+		die()
 		$application = new Application(static::$kernel);
 		$application->setAutoExit(false);
 
