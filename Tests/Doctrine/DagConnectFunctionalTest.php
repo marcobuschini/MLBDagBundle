@@ -77,12 +77,12 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $de->load($this->em);
 
         // Count all the edges
-        $dql =  'SELECT count(e)'.
+        $dql =  'SELECT e'.
                 '  FROM MLB\DagBundle\Entity\DagEdge e';
         $query = $this->em->createQuery($dql);
 
-        $count = $query->getOneOrNullResult();
-        $this->assertEquals(30, $count);
+        $count = $query->getResult();
+        $this->assertCount(30, $count);
         
         // Test edges from node 0 to node 1
         $edges01 = $edgeRepo->findEdges($node0, $node1);
