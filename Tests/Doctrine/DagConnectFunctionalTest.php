@@ -47,6 +47,9 @@ class DagConnectFunctionalTest extends IntegrationTestCase
     {
         $this->em = static::getEntityManager();
         
+        $dn = new LoadDagNodes();
+        $dn->load($this->em);
+
         // Test for test nodes to exist
         $nodeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagNode');
         $node0 = $nodeRepo->findOneByName('Node 0');
@@ -70,6 +73,9 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $node9 = $nodeRepo->findOneByName('Node 9');
         $this->assertNotNull($node9);
         
+        $de = new LoadDagEdges();
+        $de->load($this->em);
+
         // Count all the edges
         $dql =  'SELECT count(e)'.
                 '  FROM MLB\DagBundle\Entity\DagEdge e';
@@ -196,6 +202,13 @@ class DagConnectFunctionalTest extends IntegrationTestCase
     {
 
         $this->em = static::getEntityManager();
+
+        $dn = new LoadDagNodes();
+        $dn->load($this->em);
+
+        $de = new LoadDagEdges();
+        $de->load($this->em);
+
         $nodeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagNode');
         $node4 = $nodeRepo->findOneByName('Node 4');
         $node5 = $nodeRepo->findOneByName('Node 5');
