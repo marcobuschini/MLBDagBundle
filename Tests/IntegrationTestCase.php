@@ -47,7 +47,6 @@ abstract class IntegrationTestCase extends WebTestCase {
 		static::executeCommand($application, 'doctrine:schema:drop', array('--force' => true, '--full-database' => true));
 		static::executeCommand($application, 'doctrine:schema:update', array('--force' => true));
 		static::executeCommand($application, 'doctrine:fixtures:load', array());
-		static::executeCommand($application, 'doctrine:query:dql "SELECT e FROM MLB\DagBundle\Entity\DagEdge e WHERE e.hops = 0"', array());
 	}
 
 	private static function executeCommand(Application $application, $command, array $options = array()) {
