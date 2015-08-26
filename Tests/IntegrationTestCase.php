@@ -20,14 +20,14 @@ abstract class IntegrationTestCase extends WebTestCase {
 	 * {@inheritDoc}
 	 */
 	public static function setUpBeforeClass() {
-		static::rebuildDatabase();
+		static::createClient();
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	protected function setUp() {
-		static::createClient();
+		static::rebuildDatabase();
 	}
 
 	/**
@@ -41,13 +41,12 @@ abstract class IntegrationTestCase extends WebTestCase {
 	}
 
 	protected static function rebuildDatabase() {
-		static::createClient();
 		$application = new Application(static::$kernel);
 		$application->setAutoExit(false);
 
 		static::executeCommand($application, 'doctrine:schema:drop', array('--force' => true, '--full-database' => true));
 		static::executeCommand($application, 'doctrine:schema:update', array('--force' => true));
-		static::executeCommand($application, 'doctrine:fixtures:load', array('--force' => true));
+		static::executeCommand($application, 'doctrine:fixtures:load', array());
 	}
 
 	private static function executeCommand(Application $application, $command, array $options = array()) {
