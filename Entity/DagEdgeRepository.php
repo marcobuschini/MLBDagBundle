@@ -17,7 +17,7 @@ class DagEdgeRepository extends EntityRepository
         // Check if the edge already exists
         $direct = $this->findDirectEdge($start, $end);
 
-        if($direct != null)
+        if($direct !== null)
             return;
 
         $em = $this->getEntityManager();
