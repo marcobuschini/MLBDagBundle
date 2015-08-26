@@ -83,8 +83,8 @@ UNLOCK TABLES;
 SELECT COUNT(*) FROM `dag_node`;
 SELECT * FROM `dag_node`;
 
-SELECT COUNT(*) FROM `dag_edge`;
-SELECT * FROM `dag_edge`;
+SELECT COUNT(*) FROM `dag_edge` WHERE hops = 0;
+SELECT * FROM `dag_edge` WHERE hops = 0;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
