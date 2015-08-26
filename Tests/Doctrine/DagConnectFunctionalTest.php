@@ -76,6 +76,8 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $de = new LoadDagEdges();
         $de->load($this->em);
 
+        $edgeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagEdge');
+
         // Count all the edges
         $dql =  'SELECT e'.
                 '  FROM MLB\DagBundle\Entity\DagEdge e';
