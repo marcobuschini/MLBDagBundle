@@ -1,6 +1,6 @@
 <?php
 
-namespace MLBDagBundle\DataFixtures\ORM;
+namespace MLB\DagBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
