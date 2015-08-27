@@ -31,6 +31,7 @@ class AppKernel extends Kernel {
 		return array(
 			new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 			new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+			new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 			new \MLB\DagBundle\MLBDagBundle(),
 		);
 	}
