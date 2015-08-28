@@ -13,10 +13,14 @@
     </testsuites>
 
     <filter>
-        <whitelist>
+        <blacklist>
+            <directory>./vendor</directory>
+        </blacklist>
+        <whitelist processUncoveredFilesFromWhitelist="true">
             <directory>./</directory>
             <exclude>
                 <directory>./Resources</directory>
+                <directory>./Tests</directory>
             </exclude>
         </whitelist>
     </filter>
