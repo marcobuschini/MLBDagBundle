@@ -38,6 +38,7 @@ matrix:
 
 before_script:
   - composer self-update
+  - composer require symfony/framework-bundle:${SYMFONY_VERSION} --no-update --dev
   - composer install --prefer-source
   - mysql -e "create database IF NOT EXISTS test;" -uroot
 
