@@ -18,9 +18,6 @@ env:
   - SYMFONY_VERSION="2.8.*" PHPUNIT_BRIDGE=true MIN_STABILITY="dev"
   - SYMFONY_VERSION="dev-master" PHPUNIT_BRIDGE=true MIN_STABILITY="dev"
 
-cache:
-  directories:
-    - $COMPOSER_CACHE_DIR
 
 matrix:
   allow_failures:
