@@ -19,7 +19,8 @@ env:
   - SYMFONY_VERSION="dev-master" PHPUNIT_BRIDGE=true MIN_STABILITY="dev"
 
 cache:
-  - ./vendor
+  directories:
+    - ./vendor
 
 matrix:
   allow_failures:
