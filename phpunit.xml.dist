@@ -16,7 +16,7 @@
         <blacklist>
             <directory>./vendor</directory>
         </blacklist>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+        <whitelist>
             <directory>./</directory>
             <exclude>
                 <directory>./Resources</directory>
