@@ -46,24 +46,34 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $nodeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagNode');
         $node0 = $nodeRepo->findOneByName('Node 0');
         $this->assertNotNull($node0);
+        $this->assertEquals($node0->getName(), 'Node 0');
         $node1 = $nodeRepo->findOneByName('Node 1');
         $this->assertNotNull($node1);
+        $this->assertEquals($node1->getName(), 'Node 1');
         $node2 = $nodeRepo->findOneByName('Node 2');
         $this->assertNotNull($node2);
+        $this->assertEquals($node2->getName(), 'Node 2');
         $node3 = $nodeRepo->findOneByName('Node 3');
         $this->assertNotNull($node3);
+        $this->assertEquals($node3->getName(), 'Node 3');
         $node4 = $nodeRepo->findOneByName('Node 4');
         $this->assertNotNull($node4);
+        $this->assertEquals($node4->getName(), 'Node 4');
         $node5 = $nodeRepo->findOneByName('Node 5');
         $this->assertNotNull($node5);
+        $this->assertEquals($node5->getName(), 'Node 5');
         $node6 = $nodeRepo->findOneByName('Node 6');
         $this->assertNotNull($node6);
+        $this->assertEquals($node6->getName(), 'Node 6');
         $node7 = $nodeRepo->findOneByName('Node 7');
         $this->assertNotNull($node7);
+        $this->assertEquals($node7->getName(), 'Node 7');
         $node8 = $nodeRepo->findOneByName('Node 8');
         $this->assertNotNull($node8);
+        $this->assertEquals($node8->getName(), 'Node 8');
         $node9 = $nodeRepo->findOneByName('Node 9');
         $this->assertNotNull($node9);
+        $this->assertEquals($node9->getName(), 'Node 9');
         
         $edgeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagEdge');
 
