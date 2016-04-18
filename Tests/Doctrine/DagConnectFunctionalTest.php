@@ -8,6 +8,7 @@ use MLB\DagBundle\Entity\DagEdge;
 use MLB\DagBundle\Entity\DagNode;
 use MLB\DagBundle\Entity\DagEdgeRepository;
 use MLB\DagBundle\Entity\DagNodeRepository;
+use MLB\DagBundle\Entity\CircularRelationException;
 
 
 
@@ -214,7 +215,7 @@ class DagConnectFunctionalTest extends IntegrationTestCase
 
         $this->assertCount(13, $direct);
 
-        $this->setExpectedException('CircularRelationException');
+        $this->setExpectedException('MLB\DagBundle\Entity\CircularRelationException');
         $edgeRepo->createEdge($node5, $node5);
         $edgeRepo->createEdge($node5, $node4);
 
