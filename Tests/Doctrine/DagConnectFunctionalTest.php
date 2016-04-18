@@ -215,8 +215,8 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $this->assertCount(13, $direct);
 
         $this->setExpectedException('CircularRelationException');
-        $repoEdge->createEdge($node5, $node5);
-        $repoEdge->createEdge($node5, $node4);
+        $edgeRepo->createEdge($node5, $node5);
+        $edgeRepo->createEdge($node5, $node4);
 
         $edgeRepo->deleteEdgeByEnds($node4, $node5);
         $direct = $edgeRepo->findAllDirectEdges();
