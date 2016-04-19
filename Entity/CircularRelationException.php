@@ -1,5 +1,5 @@
 <?php
-namespace MLB\DagBundle\Tests\Doctrine;
+namespace MLB\DagBundle\Enity;
 
 class CircularRelationException extends \Exception {
  

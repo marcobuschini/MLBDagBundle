@@ -1,5 +1,5 @@
 <?php
-namespace MLB\DagBundle\Tests\Doctrine;
+namespace MLB\DagBundle\Entity;
 
 class EdgeDoesNotExistException extends \Exception {
 
