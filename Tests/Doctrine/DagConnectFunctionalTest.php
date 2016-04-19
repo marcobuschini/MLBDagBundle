@@ -9,6 +9,7 @@ use MLB\DagBundle\Entity\DagNode;
 use MLB\DagBundle\Entity\DagEdgeRepository;
 use MLB\DagBundle\Entity\DagNodeRepository;
 use MLB\DagBundle\Entity\CircularRelationException;
+use MLB\DagBundle\Entity\EdgeDoesNotExistException;
 
 
 
@@ -216,12 +217,22 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $this->assertCount(13, $direct);
 
         $this->setExpectedException('MLB\DagBundle\Entity\CircularRelationException');
-        $edgeRepo->createEdge($node5, $node5);
-        $edgeRepo->createEdge($node5, $node4);
+        $deleteEdge = $edgeRepo->createEdge($node5, $node5);;
+        try {
+            $edgeRepo->createEdge($node5, $node4);
+
+        } catch(CircularRelationException $e) {
+        }
 
         $edgeRepo->deleteEdgeByEnds($node4, $node5);
         $direct = $edgeRepo->findAllDirectEdges();
-        
+
         $this->assertCount(12, $direct);
+
+        $this->setExpectedException('MLB\DagBundle\Entity\EdgeDoesNotExistException');
+        try {
+            $edgeRepo->deleteEdge($deleteEdge);
+        } catch(EdgeDoesNotExistException $e) {
+        }
     }
 }
