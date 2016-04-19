@@ -24,7 +24,7 @@ class DagEdgeRepository extends EntityRepository
 
         // Check for a circular reference, step 1
         if($start->getId() === $end->getId())
-            throw new CircularRelationException();
+            throw new CircularRelationException('Connecting a node to itself will cause a loop.');
 
         // Check for a circular reference, step 2
         $dql =  'SELECT e'.
@@ -38,7 +38,7 @@ class DagEdgeRepository extends EntityRepository
         $circular = $query->getResult();
         
         if(count($circular) > 0)
-            throw new CircularRelationException();
+            throw new CircularRelationException('Connecting node '.$start->getId().' to '.$end->getId().' will cause a loop.');
 
         // Create new edge
         $edge = new DagEdge();
@@ -178,7 +178,7 @@ class DagEdgeRepository extends EntityRepository
     {
         $direct = $this->findDirectEdge($start, $end);
         if($direct === null)
-            throw new EdgeDoesNotExistException();
+            throw new EdgeDoesNotExistException('No edge connects node '.$start->getId().' to node '.$end->getId());
         $this->deleteEdge($direct);
     }
     
@@ -198,7 +198,7 @@ class DagEdgeRepository extends EntityRepository
         $direct = $query->getOneOrNullResult();
         
         if($direct === null)
-            throw new EdgeDoesNotExistException();
+            throw new EdgeDoesNotExistException('You tried to delete a non existing edge.');
         
         $em->getConnection()->beginTransaction();
         
