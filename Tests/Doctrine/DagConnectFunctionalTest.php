@@ -92,6 +92,11 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $this->assertCount(1, $edges01);
         $this->assertEquals($edges01[0]->getHops(), 0);
 
+        // Test edge getters
+        $edges01[0]->getIncomingEdge();
+        $edges01[0]->getDirectEdge();
+        $edges01[0]->getOutgoingEdge();
+
         // Test edges from node 0 to node 2
         $edges02 = $edgeRepo->findEdges($node0, $node2);
         $this->assertCount(2, $edges02);
@@ -200,6 +205,8 @@ class DagConnectFunctionalTest extends IntegrationTestCase
 
     /*
      * @depends testInitialCreation
+     * @expectedException MLB\DagBundle\Entity\CircularRelationException
+     * @expectedException MLB\DagBundle\Entity\EdgeDoesNotExistException
      */
     public function testConnection()
     {
@@ -212,27 +219,27 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         
         $edgeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagEdge');
         $edgeRepo->createEdge($node4, $node5);
+	// Double creation to complete test coverage
+        $edgeRepo->createEdge($node4, $node5);
         $direct = $edgeRepo->findAllDirectEdges();
 
         $this->assertCount(13, $direct);
 
-        $this->setExpectedException('MLB\DagBundle\Entity\CircularRelationException');
-        $deleteEdge = $edgeRepo->createEdge($node5, $node5);;
         try {
-            $edgeRepo->createEdge($node5, $node4);
-
+            $edgeRepo->createEdge($node5, $node5);;
         } catch(CircularRelationException $e) {
         }
 
-        $edgeRepo->deleteEdgeByEnds($node4, $node5);
-        $direct = $edgeRepo->findAllDirectEdges();
-
-        $this->assertCount(12, $direct);
-
-        $this->setExpectedException('MLB\DagBundle\Entity\EdgeDoesNotExistException');
         try {
+            $deleteEdge =  $edgeRepo->findDirectEdge($node4, $node5);
+            $edgeRepo->deleteEdgeByEnds($node4, $node5);
+
+            // Already deleted to complete test coverage
             $edgeRepo->deleteEdge($deleteEdge);
         } catch(EdgeDoesNotExistException $e) {
         }
+
+        $direct = $edgeRepo->findAllDirectEdges();
+        $this->assertCount(12, $direct);
     }
 }
