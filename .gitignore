@@ -1,1 +1,7 @@
 *~
+/nbproject/private/
+Tests/cache/
+build/
+composer.lock
+nbproject/
+vendor/
