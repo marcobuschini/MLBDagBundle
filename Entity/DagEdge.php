@@ -5,7 +5,7 @@ namespace MLB\DagBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * DagEdge
+ * This entity represents a connection between nodes in the graph.
  *
  * @ORM\Table(name="dag_edge")
  * @ORM\Entity(repositoryClass="MLB\DagBundle\Entity\DagEdgeRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class DagEdge
 {
     /**
-     * @var id
+     * @var id The ID of the edge.
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,44 +22,55 @@ class DagEdge
     private $id;
     
     /**
+     * @var incoming_edge The incoming edge responsible for the creation of this edge.
+     * 
      * @ORM\ManyToOne(targetEntity="DagEdge")
      * @ORM\JoinColumn(name="incoming_edge_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $incoming_edge;
 
     /**
+     * @var direct_edge The direct edge responsible for the creation of this edge.
+     * 
      * @ORM\ManyToOne(targetEntity="DagEdge")
      * @ORM\JoinColumn(name="direct_edge_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $direct_edge;
 
     /**
+     * @var outgoing_edge The outgoing edge responsible for the creation of this edge.
+     * 
      * @ORM\ManyToOne(targetEntity="DagEdge")
      * @ORM\JoinColumn(name="outgoing_edge_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $outgoing_edge;
 
     /**
+     * @var start_node The node this edge starts from.
+     * 
      * @ORM\ManyToOne(targetEntity="DagNode")
      * @ORM\JoinColumn(name="start_node_id", referencedColumnName="id", onDelete="RESTRICT")
      **/
     private $start_node;
 
     /**
+     * @var end_node The node this edge end to.
+     * 
      * @ORM\ManyToOne(targetEntity="DagNode")
      * @ORM\JoinColumn(name="end_node_id", referencedColumnName="id", onDelete="CASCADE")
      **/
     private $end_node;
     
     /**
+     * The number of hops (i.e. direct edges) this edge skips.
      * @ORM\Column(type="integer")
      */
     private $hops;
     
     /**
-     * Get id
+     * Gets the ID of the edge
      *
-     * @return guid 
+     * @return id 
      */
     public function getId()
     {
@@ -67,7 +78,7 @@ class DagEdge
     }
 
     /**
-     * Set hops
+     * Sets the number of hops this edge skips.
      *
      * @param integer $hops
      * @return DagEdge
@@ -80,7 +91,7 @@ class DagEdge
     }
 
     /**
-     * Get hops
+     * Gets the number of hops this edge skips.
      *
      * @return integer 
      */
@@ -90,7 +101,7 @@ class DagEdge
     }
 
     /**
-     * Set incoming_edge
+     * Sets the incoming edge responsible for the creation of this edge.
      *
      * @param MLB\DagBundle\Entity\DagEdge $incomingEdge
      * @return DagEdge
@@ -103,7 +114,7 @@ class DagEdge
     }
 
     /**
-     * Get incoming_edge
+     * Gets the incoming edge responsible for the creation of this edge.
      *
      * @return MLB\DagBundle\Entity\DagEdge
      */
@@ -113,7 +124,7 @@ class DagEdge
     }
 
     /**
-     * Set direct_edge
+     * Sets the direct edge responsible for the creation of this edge.
      *
      * @param MLB\DagBundle\Entity\DagEdge $directEdge
      * @return DagEdge
@@ -126,7 +137,7 @@ class DagEdge
     }
 
     /**
-     * Get direct_edge
+     * Gets the direct edge responsible for the creation of this edge.
      *
      * @return MLB\DagBundle\Entity\DagEdge
      */
@@ -136,7 +147,7 @@ class DagEdge
     }
 
     /**
-     * Set outgoing_edge
+     * Sets the outgoing edge responsible for the creation of this edge.
      *
      * @param MLB\DagBundle\Entity\DagEdge $outgoingEdge
      * @return DagEdge
@@ -149,7 +160,7 @@ class DagEdge
     }
 
     /**
-     * Get outgoing_edge
+     * Gets the outgoing edge responsible for the creation of this edge.
      *
      * @return MLB\DagBundle\Entity\DagEdge
      */
@@ -159,7 +170,7 @@ class DagEdge
     }
 
     /**
-     * Set start_node
+     * Sets the start node responsible for the creation of this edge.
      *
      * @param MLB\DagBundle\Entity\DagNode $startNode
      * @return DagEdge
@@ -172,7 +183,7 @@ class DagEdge
     }
 
     /**
-     * Get start_node
+     * Gets the start node responsible for the creation of this edge.
      *
      * @return MLB\DagBundle\Entity\DagNode
      */
@@ -182,7 +193,7 @@ class DagEdge
     }
 
     /**
-     * Set end_node
+     * Sets the edn node responsible for the creation of this edge.
      *
      * @param MLB\DagBundle\Entity\DagNode $endNode
      * @return DagEdge
@@ -195,7 +206,7 @@ class DagEdge
     }
 
     /**
-     * Get end_node
+     * Gets the end node responsible for the creation of this edge.
      *
      * @return MLB\DagBundle\Entity\DagNode
      */

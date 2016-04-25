@@ -7,11 +7,24 @@ use MLB\DagBundle\Entity\EdgeDoesNotExistException;
 use MLB\DagBundle\Entity\CircularRelationException;
 
 /**
- * DagEdgeRepository
+ * Utility methods for managing edges between nodes.
+ * 
+ * Basic create, delete, and find operations are supported. Advanced queries
+ * are not supported at the moment, maybe in a future release.
  *
  */
 class DagEdgeRepository extends EntityRepository
 {
+    /**
+     * Connects two nodes, if not directly connected yet.
+     * 
+     * Creation of a direct connection between nodes ensures that all indirect
+     * connection are also cached for later referral.
+     * 
+     * @param \MLB\DagBundle\Entity\DagNode $start The node this edge begins.
+     * @param \MLB\DagBundle\Entity\DagNode $end The node this edge ends.
+     * @throws \MLB\DagBundle\Entity\CircularRelationException Thrown if a loop will be created.
+     */
     public function createEdge(DagNode $start, DagNode $end)
     {
         // Check if the edge already exists
@@ -126,6 +139,13 @@ class DagEdgeRepository extends EntityRepository
         $em->flush();
     }
 
+    /**
+     * This method finds a direct edge between two nodes, if any.
+     * 
+     * @param \MLB\DagBundle\Entity\DagNode $start The node the edge stars with.
+     * @param \MLB\DagBundle\Entity\DagNode $end The node the edge ends with.
+     * @return \MLB\DagBundle\Entity\DagEdge if found, null otherwise.
+     */
     public function findDirectEdge(DagNode $start, DagNode $end)
     {
         $em = $this->getEntityManager();
@@ -144,6 +164,13 @@ class DagEdgeRepository extends EntityRepository
         return $edge;
     }
     
+    /**
+     * This method finds all edges between two nodes, if any.
+     * 
+     * @param \MLB\DagBundle\Entity\DagNode $start The node the edge stars with.
+     * @param \MLB\DagBundle\Entity\DagNode $end The node the edge ends with.
+     * @return array if found, null otherwise.
+     */
     public function findEdges(DagNode $start, DagNode $end)
     {
         $em = $this->getEntityManager();
@@ -162,6 +189,14 @@ class DagEdgeRepository extends EntityRepository
         return $result;
     }
 
+    /**
+     * Find all direct edges connecting nodes.
+     * 
+     * This method queries the data model to discover all direct edges, that is
+     * all edges that connect nodes with only one hop.
+     * 
+     * @return Collection All the direct edges in the graph.
+     */
     public function findAllDirectEdges()
     {
         $em = $this->getEntityManager();
@@ -174,6 +209,17 @@ class DagEdgeRepository extends EntityRepository
         return $query->getResult();
     }
 
+    /**
+     * Given two nodes connected by a direct edge this method disconnects them.
+     * 
+     * Mind that if two nodes are indirectly connected (i.e. if node A is
+     * conected to node B and node B is connected to node C then node A is
+     * connected to node C, but this is not a direct connection-
+     * 
+     * @param \MLB\DagBundle\Entity\DagNode $start The node the edge stars with.
+     * @param \MLB\DagBundle\Entity\DagNode $end The node the edge edns with.
+     * @throws EdgeDoesNotExistException If the nodes are not directly connected.
+     */
     public function deleteEdgeByEnds(DagNode $start, DagNode $end)
     {
         $direct = $this->findDirectEdge($start, $end);
@@ -181,7 +227,13 @@ class DagEdgeRepository extends EntityRepository
             throw new EdgeDoesNotExistException('No edge connects node '.$start->getId().' to node '.$end->getId());
         $this->deleteEdge($direct);
     }
-    
+
+    /**
+     * Given a direct edge, it removes it.
+     * 
+     * @param \MLB\DagBundle\Entity\DagEdge $edge The edge to delete.
+     * @throws EdgeDoesNotExistException It the direct edge does not exist.
+     */
     public function deleteEdge(DagEdge $edge)
     {
         
