@@ -29,11 +29,16 @@ class CircularRelationException extends \Exception {
      * @param type $code The code to be reported
      * @param \Exception $previous The exception that preceds this one in the chain
      */
-    public function __construct(DagNode $start, DagNode $end) {
+    public function __construct(DagEdgeRepository $edgeRepo, DagNode $start, DagNode $end) {
         if($start->getId() === $end->getId()) {
             parent::__construct('You cannot connect node '.$start->getId().' to itself, this will create a loop!');
         } else {
-            $message = 'You cannot connect node '.$start->getId().' to node '.$end->getId().', this will create a loop!';
+            $message = 'You cannot connect node '.$start->getId().' to node '.$end->getId().', this will create a loop, as follows:'.PHP_EOL;
+            $edgeRepo = $this->getEntityManager()->getRepository('MLB\DagBundle\Entity\DagEdge');
+            $edges = $edgeRepo->findEdges($end, $start);
+            foreach($edges as $edge) {
+                $message .= ' - Edge '.$edge->getId().' connects node '.$edge->getStartNode().' to node '.$edge->getEndNode().' with '.$edge->getHops().' hops.'.PHP_EOL;
+            }
             parent::__construct($message);
         }
     }   

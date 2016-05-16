@@ -34,10 +34,11 @@ class DagEdgeRepository extends EntityRepository
             return;
 
         $em = $this->getEntityManager();
+        $repoEdge = $em->getRepository('MLB\DagBundle\Entity\DagEdge');
 
         // Check for a circular reference, step 1
         if($start->getId() === $end->getId())
-            throw new CircularRelationException($start, $end);
+            throw new CircularRelationException($repoEdge, $start, $end);
 
         // Check for a circular reference, step 2
         $dql =  'SELECT e'.
@@ -51,7 +52,7 @@ class DagEdgeRepository extends EntityRepository
         $circular = $query->getResult();
         
         if(count($circular) > 0)
-            throw new CircularRelationException($start, $end);
+            throw new CircularRelationException($repoEdge, $start, $end);
 
         // Create new edge
         $edge = new DagEdge();
@@ -120,7 +121,6 @@ class DagEdgeRepository extends EntityRepository
               ->setParameter('end', $end);
 
         $steps = $query->getResult();
-        $repoEdge = $em->getRepository('MLB\DagBundle\Entity\DagEdge');
 
         foreach($steps as $step)
         {
