@@ -1,4 +1,6 @@
 <?php
+use MLB\DagBundle\Entity;
+
 namespace MLB\DagBundle\Entity;
 
 /**
@@ -27,11 +29,13 @@ class CircularRelationException extends \Exception {
      * @param type $code The code to be reported
      * @param \Exception $previous The exception that preceds this one in the chain
      */
-    public function __construct($message, $code = 0, \Exception $previous = null) {
-        // some code
-    
-        // make sure everything is assigned properly
-        parent::__construct($message, $code, $previous);
+    public function __construct(DagNode $start, DagNode $end) {
+        if($start->getId() === $end->getId()) {
+            parent::__construct('You cannot connect node '.$start->getId().' to itself, this will create a loop!');
+        } else {
+            $message = 'You cannot connect node '.$start->getId().' to node '.$end->getId().', this will create a loop!';
+            parent::__construct($message);
+        }
     }   
 }
 
