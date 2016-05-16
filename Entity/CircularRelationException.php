@@ -1,7 +1,7 @@
 <?php
-use MLB\DagBundle\Entity;
-
 namespace MLB\DagBundle\Entity;
+
+use MLB\DagBundle\Entity;
 
 /**
  * This exception is thrown when a loop is detected in the graph.
