@@ -214,6 +214,7 @@ class DagConnectFunctionalTest extends IntegrationTestCase
         $this->em = static::getEntityManager();
 
         $nodeRepo = $this->em->getRepository('MLB\DagBundle\Entity\DagNode');
+        $node1 = $nodeRepo->findOneByName('Node 1');
         $node4 = $nodeRepo->findOneByName('Node 4');
         $node5 = $nodeRepo->findOneByName('Node 5');
         
@@ -227,6 +228,11 @@ class DagConnectFunctionalTest extends IntegrationTestCase
 
         try {
             $edgeRepo->createEdge($node5, $node5);;
+        } catch(CircularRelationException $e) {
+        }
+
+        try {
+            $edgeRepo->createEdge($node4, $node1);
         } catch(CircularRelationException $e) {
         }
 

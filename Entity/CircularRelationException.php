@@ -34,10 +34,9 @@ class CircularRelationException extends \Exception {
             parent::__construct('You cannot connect node '.$start->getId().' to itself, this will create a loop!');
         } else {
             $message = 'You cannot connect node '.$start->getId().' to node '.$end->getId().', this will create a loop, as follows:'.PHP_EOL;
-            $edgeRepo = $this->getEntityManager()->getRepository('MLB\DagBundle\Entity\DagEdge');
             $edges = $edgeRepo->findEdges($end, $start);
             foreach($edges as $edge) {
-                $message .= ' - Edge '.$edge->getId().' connects node '.$edge->getStartNode().' to node '.$edge->getEndNode().' with '.$edge->getHops().' hops.'.PHP_EOL;
+                $message .= ' - Edge '.$edge->getId().' connects node '.$edge->getStartNode()->getId().' to node '.$edge->getEndNode()->getId().' with '.$edge->getHops().' hops.'.PHP_EOL;
             }
             parent::__construct($message);
         }
