@@ -1,9 +1,9 @@
 <?php
 
-namespace MLB\DagBundle;
+namespace Mlb\DagBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MLBDagBundle extends Bundle
+class MlbDagBundle extends Bundle
 {
 }

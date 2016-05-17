@@ -16,3 +16,6 @@ framework:
     resource: ~
   secret: whatever
   test: ~
+
+mlb_dag:
+  full_loop_report: true

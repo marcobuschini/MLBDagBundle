@@ -1,6 +1,6 @@
 <?php
 
-namespace MLB\DagBundle\Entity;
+namespace Mlb\DagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace MLB\DagBundle\Tests;
+namespace Mlb\DagBundle\Tests;
 
 require_once __DIR__.'/bootstrap.php';
 
@@ -32,7 +32,7 @@ class AppKernel extends Kernel {
 			new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 			new \Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
 			new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
-			new \MLB\DagBundle\MLBDagBundle(),
+			new \Mlb\DagBundle\MlbDagBundle(),
 		);
 	}
 

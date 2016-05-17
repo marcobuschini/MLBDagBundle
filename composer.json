@@ -27,8 +27,8 @@
     "prefer-stable": true,
     "autoload": {
         "psr-0": {
-            "MLB\\DagBundle\\": ""
+            "Mlb\\DagBundle\\": ""
         }
     },
-    "target-dir": "MLB/DagBundle"
+    "target-dir": "Mlb/DagBundle"
 }

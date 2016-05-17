@@ -1,6 +1,6 @@
 <?php
 
-namespace MLB\DagBundle\Entity;
+namespace Mlb\DagBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -103,7 +103,7 @@ class DagEdge
     /**
      * Sets the incoming edge responsible for the creation of this edge.
      *
-     * @param MLB\DagBundle\Entity\DagEdge $incomingEdge
+     * @param DagEdge $incomingEdge
      * @return DagEdge
      */
     public function setIncomingEdge(DagEdge $incomingEdge = null)
@@ -116,7 +116,7 @@ class DagEdge
     /**
      * Gets the incoming edge responsible for the creation of this edge.
      *
-     * @return MLB\DagBundle\Entity\DagEdge
+     * @return DagEdge
      */
     public function getIncomingEdge()
     {
@@ -126,7 +126,7 @@ class DagEdge
     /**
      * Sets the direct edge responsible for the creation of this edge.
      *
-     * @param MLB\DagBundle\Entity\DagEdge $directEdge
+     * @param DagEdge $directEdge
      * @return DagEdge
      */
     public function setDirectEdge(DagEdge $directEdge = null)
@@ -139,7 +139,7 @@ class DagEdge
     /**
      * Gets the direct edge responsible for the creation of this edge.
      *
-     * @return MLB\DagBundle\Entity\DagEdge
+     * @return DagEdge
      */
     public function getDirectEdge()
     {
@@ -149,7 +149,7 @@ class DagEdge
     /**
      * Sets the outgoing edge responsible for the creation of this edge.
      *
-     * @param MLB\DagBundle\Entity\DagEdge $outgoingEdge
+     * @param DagEdge $outgoingEdge
      * @return DagEdge
      */
     public function setOutgoingEdge(DagEdge $outgoingEdge = null)
@@ -162,7 +162,7 @@ class DagEdge
     /**
      * Gets the outgoing edge responsible for the creation of this edge.
      *
-     * @return MLB\DagBundle\Entity\DagEdge
+     * @return DagEdge
      */
     public function getOutgoingEdge()
     {
@@ -172,7 +172,7 @@ class DagEdge
     /**
      * Sets the start node responsible for the creation of this edge.
      *
-     * @param MLB\DagBundle\Entity\DagNode $startNode
+     * @param DagNode $startNode
      * @return DagEdge
      */
     public function setStartNode(DagNode $startNode = null)
@@ -185,7 +185,7 @@ class DagEdge
     /**
      * Gets the start node responsible for the creation of this edge.
      *
-     * @return MLB\DagBundle\Entity\DagNode
+     * @return DagNode
      */
     public function getStartNode()
     {
@@ -195,7 +195,7 @@ class DagEdge
     /**
      * Sets the edn node responsible for the creation of this edge.
      *
-     * @param MLB\DagBundle\Entity\DagNode $endNode
+     * @param DagNode $endNode
      * @return DagEdge
      */
     public function setEndNode(DagNode $endNode = null)
@@ -208,7 +208,7 @@ class DagEdge
     /**
      * Gets the end node responsible for the creation of this edge.
      *
-     * @return MLB\DagBundle\Entity\DagNode
+     * @return DagNode
      */
     public function getEndNode()
     {

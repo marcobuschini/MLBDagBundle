@@ -1,11 +1,11 @@
 <?php
 
-namespace MLB\DagBundle\DataFixtures\ORM;
+namespace Mlb\DagBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use MLB\DagBundle\Entity\DagEdge;
-use MLB\DagBundle\Entity\DagNode;
+use Mlb\DagBundle\Entity\DagEdge;
+use Mlb\DagBundle\Entity\DagNode;
 
 class LoadDagNodes implements FixtureInterface
 {

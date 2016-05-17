@@ -1,5 +1,5 @@
 <?php
-namespace MLB\DagBundle\Entity;
+namespace Mlb\DagBundle\Entity;
 
 /**
  * This exception is thrown when a non exising edge is being deleted.
