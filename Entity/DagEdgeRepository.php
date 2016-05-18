@@ -38,7 +38,7 @@ class DagEdgeRepository extends EntityRepository
 
         // Check for a circular reference, step 1
         if($start->getId() === $end->getId())
-            throw new CircularRelationException($repoEdge, $start, $end);
+            throw new CircularRelationException($start, $end);
 
         // Check for a circular reference, step 2
         $dql =  'SELECT e'.
@@ -52,7 +52,7 @@ class DagEdgeRepository extends EntityRepository
         $circular = $query->getResult();
         
         if(count($circular) > 0)
-            throw new CircularRelationException($repoEdge, $start, $end);
+            throw new CircularRelationException($start, $end);
 
         // Create new edge
         $edge = new DagEdge();

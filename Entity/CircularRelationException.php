@@ -24,22 +24,29 @@ class CircularRelationException extends \Exception {
      * 
      * This library takes care that no circular relation can be created with it,
      * and throws this exception if a connection violates this rule.
+     *
+     * The code to load the the detected loop is as follows:
      * 
-     * @param type $message The message to be reported
-     * @param type $code The code to be reported
-     * @param \Exception $previous The exception that preceds this one in the chain
+     * ```php
+     * $edges = $edgeRepo->findEdges($end, $start);
+     * foreach($edges as $edge) {
+     *     $edge->getId();
+     *     $edge->getStartNode(); // Should always be $end
+     *     $edge->getEndNode();   // Should always be $start
+     *     $edge->getHops();
+     * }
+     * ```
+     *
+     * @param DagEdgeRepository $edgeRepo The edge repository to be used when analyzing the loop
+     * @param DagNode $start The node the craated edge would have started at
+     * @param DagNode $end The node the craated edge would have ended at
      */
-    public function __construct(DagEdgeRepository $edgeRepo, DagNode $start, DagNode $end) {
+    public function __construct(DagNode $start, DagNode $end) {
         if($start->getId() === $end->getId()) {
             parent::__construct('You cannot connect node '.$start->getId().' to itself, this will create a loop!');
         } else {
-            $message = 'You cannot connect node '.$start->getId().' to node '.$end->getId().', this will create a loop, as follows:'.PHP_EOL;
-            $edges = $edgeRepo->findEdges($end, $start);
-            foreach($edges as $edge) {
-                $message .= ' - Edge '.$edge->getId().' connects node '.$edge->getStartNode()->getId().' to node '.$edge->getEndNode()->getId().' with '.$edge->getHops().' hops.'.PHP_EOL;
-            }
+            $message = 'You cannot connect node '.$start->getId().' to node '.$end->getId().', this will create a loop.'.PHP_EOL;
             parent::__construct($message);
         }
     }   
 }
-
