@@ -7,6 +7,10 @@ php:
   - 7.0
   - hhvm
 
+os:
+  - linux
+  - osx
+
 env:
   - SYMFONY_VERSION="2.3.*"
   - SYMFONY_VERSION="2.7.*" PHPUNIT_BRIDGE=true
