@@ -2,6 +2,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/74c5de39-97be-43bb-a7ca-983629edd476/mini.png)](https://insight.sensiolabs.com/projects/74c5de39-97be-43bb-a7ca-983629edd476)
 [![Build Status](https://travis-ci.org/marcobuschini/MLBDagBundle.svg?branch=master)](https://travis-ci.org/marcobuschini/MLBDagBundle)
 [![Coverage Status](https://coveralls.io/repos/github/marcobuschini/MLBDagBundle/badge.svg?branch=master)](https://coveralls.io/github/marcobuschini/MLBDagBundle?branch=master)
+[![codecov](https://codecov.io/gh/marcobuschini/MLBDagBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/marcobuschini/MLBDagBundle)
 
 # marcobuschini/MLBDagBundle
 
