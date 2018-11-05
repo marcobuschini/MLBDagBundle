@@ -11,7 +11,8 @@ env:
   - SYMFONY_VERSION="3.2.*" PHPUNIT_BRIDGE=true
   - SYMFONY_VERSION="3.3.*" PHPUNIT_BRIDGE=true
   - SYMFONY_VERSION="dev-master" PHPUNIT_BRIDGE=true MIN_STABILITY="dev"
-
+  global:
+    - CC_TEST_REPORTER_ID=c430b1e8e2a68d4ec24751557f6dcf822a1c5de477d6059dc4f915414359f3f0
 matrix:
   allow_failures:
     - php: hhvm
@@ -23,10 +24,16 @@ before_script:
   - composer require symfony/symfony:${SYMFONY_VERSION} --no-update
   - composer install --prefer-source
   - mysql -e "create database IF NOT EXISTS test;" -uroot
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 script:
   - mkdir -p build/logs
   - phpunit -c phpunit.xml.dist
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 after_success:
   - travis_retry php vendor/bin/coveralls -v
