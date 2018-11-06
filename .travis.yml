@@ -7,9 +7,9 @@ php:
 
 env:
   - SYMFONY_VERSION="2.8.*" PHPUNIT_BRIDGE=true
-  - SYMFONY_VERSION="3.2.*" PHPUNIT_BRIDGE=true
-  - SYMFONY_VERSION="3.3.*" PHPUNIT_BRIDGE=true
-  - SYMFONY_VERSION="dev-master" PHPUNIT_BRIDGE=true MIN_STABILITY="dev"
+  - SYMFONY_VERSION="3.4.*" PHPUNIT_BRIDGE=true
+  - SYMFONY_VERSION="4.0.*" PHPUNIT_BRIDGE=true
+  - SYMFONY_VERSION="4.1.*" PHPUNIT_BRIDGE=true
 
 global:
   - CC_TEST_REPORTER_ID=c430b1e8e2a68d4ec24751557f6dcf822a1c5de477d6059dc4f915414359f3f0
@@ -17,7 +17,8 @@ global:
 matrix:
   allow_failures:
     - php: hhvm
-    - env: SYMFONY_VERSION="dev-master" PHPUNIT_BRIDGE=true MIN_STABILITY="dev"
+    - env: SYMFONY_VERSION="4.0.*" PHPUNIT_BRIDGE=true"
+    - env: SYMFONY_VERSION="4.1.*" PHPUNIT_BRIDGE=true"
   fast_finish: true
 
 before_script:
